@@ -1,6 +1,12 @@
 import sys, pygame, tiles
 from gui import GUI
 
+
+"""
+Drop it LOW when dey in da trap
+-- Joshua
+"""
+
 #TEST ON MAC! #Test on Windows!
 RESOLUTION = pygame.Rect(0, 0, 800, 600)
 BG_COLOR = (32, 32, 32)

@@ -1,6 +1,7 @@
 import sys, pygame, tiles
 from gui import GUI
 
+#TEST ON MAC!
 RESOLUTION = pygame.Rect(0, 0, 800, 600)
 BG_COLOR = (32, 32, 32)
 

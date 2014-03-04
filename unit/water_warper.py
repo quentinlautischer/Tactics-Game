@@ -20,7 +20,7 @@ class Water_warper(TeleportUnit):
 
 	"""
 
-	sprite = pygame.image.load("assets/")
+	sprite = pygame.image.load("assets/novaangler.png")
 
 	def __init__(self, **keywords):
 		#load the image for the base class.
@@ -51,4 +51,7 @@ class Water_warper(TeleportUnit):
 
 
 		#water units cannot move on ground
-		if(tile.type != 'water')
+		if(tile.type != 'water'):
+			return False
+
+		return True

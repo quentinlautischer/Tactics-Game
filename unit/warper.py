@@ -20,7 +20,7 @@ class Warper(TeleportUnit):
       in time!
     - When firing at another air unit, this unit does extra damage.
     """
-    sprite = pygame.image.load("assets/fighter.png")
+    sprite = pygame.image.load("assets/novavangard.png")
     
     def __init__(self, **keywords):
         #load the image for the base class.

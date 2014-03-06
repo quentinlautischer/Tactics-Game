@@ -34,7 +34,7 @@ class Warper(TeleportUnit):
         self.type = "Warper"
         self.speed = 10
         self.max_atk_range = 1
-        self.damage = 2
+        self.damage = 50
         self.defense = 3
         self.bonus_damage = 2
         self.min_move_distance = 8

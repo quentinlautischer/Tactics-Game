@@ -3,6 +3,9 @@ import unit, helper, effects
 from tiles import Tile
 import pygame
 
+FRAME_MOVE_SPEED = 3/20
+SIZE = 20
+
 class TeleportUnit(BaseUnit):
     """
     The basic ground-moving unit.
@@ -31,24 +34,39 @@ class TeleportUnit(BaseUnit):
             
         return super().is_stoppable(tile, pos)
 
-    # def update(self):
-    #     """
-    #     Overrides the update function of the Sprite class.
-    #     Handles movement.
-    #     """
-    #     if self._moving:
-    #         #checks if path is empty
-    #         if not self._path:
-    #             #notify not moving
-    #             self._moving = False
-    #             return
+    def update(self):
+        """
+        Overrides the update function of the Sprite class.
+        Handles movement.
+        """
+        if self._moving:
+            #checks if path is empty
+            if not self._path:
+                #notify not moving
+                self._moving = False
+                return
                 
-    #         #There's a path to move on
-    #         else:
-                                  
-    #             #angle properly
-    #             #self.face_vector((dx, dy))
+            #There's a path to move on
+            else:
+                #If we're at the next tile remove it
+                if (self.tile_x, self.tile_y) == self._path[0]:
+                    self._path.pop(0)
+                    if not self._path: return
 
-    #             #set the new value
-    #             self.tile_x += self._path[-2][1]
-    #             self.tile_y += self._path[-2][0]
+                #get values for calcs
+                path_x, path_y = self._path[0]
+
+                #determine deltas
+                dx = helper.clamp(path_x - self.tile_x,
+                                  -FRAME_MOVE_SPEED,
+                                  FRAME_MOVE_SPEED)
+                dy = helper.clamp(path_y - self.tile_y,
+                                  -FRAME_MOVE_SPEED,
+                                  FRAME_MOVE_SPEED)
+                                  
+                #angle properly
+                self.face_vector((dx, dy))
+
+                #set the new value
+                self.tile_x += dx
+                self.tile_y += dy

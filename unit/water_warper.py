@@ -28,7 +28,7 @@ class Water_warper(TeleportUnit):
 
 		#load the base class 
 		super().__init__(**keywords)
-
+		self.hit_sound = "Wormhole"
 
 		#set unit specific things.
 		self.type = "Water_warper"

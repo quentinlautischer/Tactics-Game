@@ -289,12 +289,19 @@ class BaseUnit(Sprite):
         self._angle = angle
         self._update_image()
         
-    def hurt(self, damage):
+    def hurt(self, damage, attacker):
         """
         Causes damage to the unit, and destroys it when it's out of health.
         """
         self.health -= damage
         
+        if attacker.type == "Teleport Unit":
+            self.die_effect = effects.Wormhole
+            self.die_sound = "Wormhole"
+        else: 
+            self.die_effect = effects.Explosion
+            self.die_sound = "Explosion"
+
         # Dead!
         if self.health <= 0:
             self.deactivate()

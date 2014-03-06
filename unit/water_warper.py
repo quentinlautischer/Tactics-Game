@@ -45,7 +45,7 @@ class Water_warper(TeleportUnit):
 		Returns whether or no this unit can move over a certian tile.
 		"""
 		#Return default
-		if not super(). is passable(tile,pos):
+		if not super().is_passable(tile,pos):
 			return False
 
 
@@ -55,3 +55,5 @@ class Water_warper(TeleportUnit):
 			return False
 
 		return True
+
+unit.unit_types["Water-Warper"] = Water_warper

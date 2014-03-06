@@ -1,12 +1,46 @@
 Change to internal functionality:
 
+Change # 1:
+
+	This change was a implimentation of our custome class.  Our new class is a
+	"TeleportUnit".  It has the ability to move far in one move.  Aka it can move into a thing ring of a high radious aroundit. This class also does not drive around like other classes, it teleports around so we took out the movement animation and added a teleport animation.
+
+Change # 2:
+
+	This change is the implimentation of our two new unit types.  We have one land and sky based teleport unit.  He moves like the Teleport class describes but he cannot move onto water.  This unit has low health and is easy to kill, but hard to catch.  He is also a one hit kill on any unit but he has to be directly adjacent to the enemy to attack.
+
+	The other unit we ccreated is a water based teleporting submarine.  He moves and attacks like the ground unit only it cannot move onto land or in the air.  
+
+
+Change #
+
+	This change to the internal code is so that we can acomodate our new class "TeleportUnit".  We made the change because we decided that instead of causeing an
+	enemy to blow up, teleporter units would use "Negative-Space-Implosion" to smite their enemies.  This mod allows the afffected functions to check class type and changes the die effect and sound accordingly based on the unit type.
+
+
 	documents edited: GUI.py
 
-	within the GUI class we modified the method "sel_unit_attack()".  We edited
-	the call to the function "atk_unit.hurt()" to accept a second perameter
-	"self.sel_unit" (ie: the attacking unit object)
+		within the GUI class we modified the method "sel_unit_attack()".  We edited
+		the call to the function "atk_unit.hurt()" to accept a second perameter
+		"self.sel_unit" (ie: the attacking unit object)
 
 	documents edited: base_unit.py
 
-	within the class "BaseUnit" we modified the method "hurt()" to accept a second
-	parameter "attacker" (ie: the attacking unit object)
+		within the class "BaseUnit" we modified the method "hurt()" to accept a second
+		parameter "attacker" (ie: the attacking unit object)
+
+		Here is what we changed that method to:
+
+
+			def hurt(self, damage, attacker):
+		        """
+		        Causes damage to the unit, and destroys it when it's out of health.
+		        """
+		        self.health -= damage
+		        
+		        if attacker.type == "Warper":
+		            self.die_effect = effects.Wormhole
+		            self.die_sound = "Wormhole"
+		        else: 
+		            self.die_effect = effects.Explosion
+		            self.die_sound = "Explosion"

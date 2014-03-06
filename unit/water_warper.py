@@ -28,17 +28,17 @@ class Water_warper(TeleportUnit):
 
 		#load the base class 
 		super().__init__(**keywords)
-		self.hit_sound = "Wormhole"
+		
 
 		#set unit specific things.
 		self.type = "Water_warper"
-		self.speed = 10
-		self.max_atk_range = 15
-		self.damage = 10
+		self.speed = 15
+		self.max_atk_range = 1
+		self.damage = 50
 		self.defense = 8
 		self.bonus_damage = 2
 		self.min_move_distance = 13
-		self.hit_effect = effects.wormhole
+		
 
 	def is_passable(self, tile, pos):
 		""" 

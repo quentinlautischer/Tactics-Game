@@ -1,0 +1,12 @@
+Change to internal functionality:
+
+	documents edited: GUI.py
+
+	within the GUI class we modified the method "sel_unit_attack()".  We edited
+	the call to the function "atk_unit.hurt()" to accept a second perameter
+	"self.sel_unit" (ie: the attacking unit object)
+
+	documents edited: base_unit.py
+
+	within the class "BaseUnit" we modified the method "hurt()" to accept a second
+	parameter "attacker" (ie: the attacking unit object)

@@ -28,17 +28,18 @@ class Water_warper(TeleportUnit):
 
 		#load the base class 
 		super().__init__(**keywords)
-		
+
 
 		#set unit specific things.
 		self.type = "Water_warper"
 		self.speed = 15
 		self.max_atk_range = 1
+
 		self.damage = 50
 		self.defense = 8
 		self.bonus_damage = 2
 		self.min_move_distance = 13
-		
+
 
 	def is_passable(self, tile, pos):
 		""" 

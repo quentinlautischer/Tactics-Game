@@ -295,7 +295,7 @@ class BaseUnit(Sprite):
         """
         self.health -= damage
         
-        if attacker.type == "Teleport Unit":
+        if attacker.type == "Warper":
             self.die_effect = effects.Wormhole
             self.die_sound = "Wormhole"
         else: 

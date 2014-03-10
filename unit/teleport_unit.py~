@@ -48,10 +48,10 @@ class TeleportUnit(BaseUnit):
                 
             #There's a path to move on
             else:
-                #Delete path because we're teleportin' baby!
+                print(self._path)
                 for i in range(len(self._path)-1):
                     self._path.pop(0)
-
+                print(self._path)
 
                 #If we're at the next tile remove it
                 if (self.tile_x, self.tile_y) == self._path[0]:
@@ -60,6 +60,17 @@ class TeleportUnit(BaseUnit):
 
                 #get values for calcs
                 path_x, path_y = self._path[0]
+
+                #determine deltas
+                dx = helper.clamp(path_x - self.tile_x,
+                                  -FRAME_MOVE_SPEED,
+                                  FRAME_MOVE_SPEED)
+                dy = helper.clamp(path_y - self.tile_y,
+                                  -FRAME_MOVE_SPEED,
+                                  FRAME_MOVE_SPEED)
+                                  
+                #angle properly
+                self.face_vector((dx, dy))
 
                 #set the new value
                 self.tile_x = path_x

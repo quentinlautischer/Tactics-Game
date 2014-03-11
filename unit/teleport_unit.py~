@@ -23,6 +23,7 @@ class TeleportUnit(BaseUnit):
         self.hit_sound = "Wormhole"
         self.hit_effect = effects.Wormhole
         self.kill_effect = effects.Wormhole
+        self.move_animation = effects.Reverse_Wormhole
         
     def is_stoppable(self, tile, pos):
         """

@@ -1,6 +1,7 @@
 from unit.base_unit import BaseUnit
 import unit, helper, effects
 from tiles import Tile
+from animation import Animation
 import pygame
 
 FRAME_MOVE_SPEED = 3/20
@@ -21,6 +22,8 @@ class TeleportUnit(BaseUnit):
         self.type = "Teleport Unit"
         self.hit_sound = "Wormhole"
         self.hit_effect = effects.Wormhole
+        self.kill_effect = effects.Wormhole
+        self.move_animation = effects.Wormhole
         
     def is_stoppable(self, tile, pos):
         """

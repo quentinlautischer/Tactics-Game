@@ -56,7 +56,7 @@ class BaseUnit(Sprite):
         self.move_sound = None
         self.hit_sound = None
         self.die_sound = "Explosion"
-        self.move_animation = None
+        self.move_animation = 0
         
         #Dictionary of movement costs by tile type name
         self._move_costs = {}

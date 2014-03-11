@@ -542,9 +542,6 @@ class GUI(LayeredUpdates):
         # Change the game state to show that there was a movement.
         self.change_mode(Modes.Moving)
         
-        if self.sel_unit.move_animation:
-            self._effects.add(self.sel_unit.move_animation(self.map.screen_coords(pos)))
-
         # Mark that the unit has moved
         self.sel_unit.turn_state[0] = True
         

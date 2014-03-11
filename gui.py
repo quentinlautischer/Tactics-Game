@@ -542,6 +542,7 @@ class GUI(LayeredUpdates):
         # Change the game state to show that there was a movement.
         self.change_mode(Modes.Moving)
         
+        # Implements animation for movement of unit if it exists (teleport unit spawns a warp)
         if self.sel_unit.move_animation:
             self._effects.add(self.sel_unit.move_animation(self.map.screen_coords(pos)))
 

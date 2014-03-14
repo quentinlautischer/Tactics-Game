@@ -8,31 +8,30 @@ def nodal_prob(base_attack,crit_prob,turns,memo,health):
 	for which you specifically wish to compute probability for
 	"""
 
-	turnsless = turns - 1
+	turns_left = turns - 1
+
+	print("Turns left:")
+	print(turns_left)
 	#nodal_prob = 0 #<-- THIS IS THE ISSUE THIS VARIABLE HAS THE SAME NAME AS THE FUNCTION
 	nodally_probular = 0
 
-
+	print("health_left:")
 	for crit in crit_prob:
 		total_d = crit + base_attack
-		d_diff = health - total_d
-
-		if d_diff not in memo:
+		health_left = health - total_d
+		print(health_left)
+		if (base_attack,turns,health) not in memo:
 			
 			if total_d == 0:
-				memo[d_diff] = 0
-			elif d_diff <= 0:
-				memo[d_diff] = 1
-			elif turnsless > 0:
-				print(d_diff)
+				nodally_probular += 0
+			elif health_left <= 0:
+				nodally_probular += 1*crit_prob[crit]
+			elif turns_left > 0:
+				
+				nodally_probular += nodal_prob(base_attack,crit_prob,turns_left,memo,health_left) * crit_prob[crit]
 
-				memo[d_diff] = nodal_prob(base_attack,crit_prob,turnsless,memo,d_diff)
-		
-		if d_diff in memo:
-			nodally_probular += memo[d_diff]*crit_prob[crit]
-		else:
-			nodally_probular += 0
-	print(nodally_probular)
+		memo[(base_attack,turns,health)] = nodally_probular
+
 	return nodally_probular
 
 def destroy_prob(attacker, defender, current_tile, turns):

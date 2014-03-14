@@ -9,7 +9,9 @@ def nodal_prob(base_attack,crit_prob,turns,memo,health):
 	"""
 
 	turnsless = turns - 1
-	nodal_prob = 0 
+	#nodal_prob = 0 #<-- THIS IS THE ISSUE THIS VARIABLE HAS THE SAME NAME AS THE FUNCTION
+	nodally_probular = 0
+
 
 	for crit in crit_prob:
 		total_d = crit + base_attack
@@ -22,14 +24,16 @@ def nodal_prob(base_attack,crit_prob,turns,memo,health):
 			elif d_diff <= 0:
 				memo[d_diff] = 1
 			elif turnsless > 0:
+				print(d_diff)
+
 				memo[d_diff] = nodal_prob(base_attack,crit_prob,turnsless,memo,d_diff)
 		
 		if d_diff in memo:
-			nodal_prob += memo[d_diff]*crit_prob[crit]
+			nodally_probular += memo[d_diff]*crit_prob[crit]
 		else:
-			nodal_prob += 0
-
-	return nodal_prob
+			nodally_probular += 0
+	print(nodally_probular)
+	return nodally_probular
 
 def destroy_prob(attacker, defender, current_tile, turns):
 
@@ -37,9 +41,10 @@ def destroy_prob(attacker, defender, current_tile, turns):
 	hp = defender.health
 	crit_prob = {-1:0.2, 0:0.5, 1:0.2, 2:0.1}
 	prob = [0]
+	memo = {}
 
 	for i in range(turns+1):
-		memo = {}
+		#memo = {}
 
 		prob_i = nodal_prob(base_attack,crit_prob,i,memo,hp)
 		prob.append(prob_i)

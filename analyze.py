@@ -29,9 +29,11 @@ def nodal_prob(base_attack,crit_prob,turns,memo,health):
 			elif turns_left > 0:
 				
 				nodally_probular += nodal_prob(base_attack,crit_prob,turns_left,memo,health_left) * crit_prob[crit]
+		else:
+			nodally_probular += memo[(base_attack,turns,health)]
 
-		memo[(base_attack,turns,health)] = nodally_probular
-
+	memo[(base_attack,turns,health)] = nodally_probular
+	if nodally_probular > 1: nodally_probular = 1
 	return nodally_probular
 
 def destroy_prob(attacker, defender, current_tile, turns):

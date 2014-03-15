@@ -5,18 +5,20 @@ Map: maps/island.gif
 
 UNITS START
 Anti-Air 0 22 22 180
-Warper 0 19 20 90
+Warper 0 23 22 90
 Jeep 0 20 22 180
 Tank 0 18 22 90
 Tank 0 21 20 180
 Artillery 0 21 19 180
 Anti-Armour 0 18 21 90
-Water-Warper 0 27 20 90
+Water-Warper 0 28 24 90
 Battleship 0 13 27 180
 Bomber 0 27 26 180
 Carrier 0 27 27 0
 Fighter 0 26 27 180
 Anti-Air 1 9 6 0
+Warper 1 8 6 270
+Water-Warper 1 1 5 270 
 Jeep 1 11 9 270
 Jeep 1 9 8 0
 Tank 1 10 7 270

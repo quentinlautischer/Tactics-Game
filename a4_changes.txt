@@ -9,10 +9,25 @@ Change # 2:
 
 	This change is the implimentation of our two new unit types.  We have one land and sky based teleport unit.  He moves like the Teleport class describes but he cannot move onto water.  This unit has low health and is easy to kill, but hard to catch.  He is also a one hit kill on any unit but he has to be directly adjacent to the enemy to attack.
 
-	The other unit we ccreated is a water based teleporting submarine.  He moves and attacks like the ground unit only it cannot move onto land or in the air.  
+	The other unit we created is a water based teleporting submarine.  He moves and attacks like the ground unit only it cannot move/attack onto/units on land or in the air.  
+
+Change # 3:
+
+	We implimented the function "destroy_prob(attacker, defender, current_tile, turns)", which destroy_prob returns the an array of len(turns + 1).  Each k in the array is the 
+	probability of destroying the defender in k turns taking into account defenses, tile 
+	defense bonus, attack power and critical attack probabilities.  This function utilizes a helper function "nodal_prob(base_attack,crit_prob,turns,memo,health)", which
+	Thinking of the probability of destruction at specific healths of the enemy
+	as "nodes", this function computes the destruction probability for k turns.  It takes
+	the base attack of the attacker, a dictionarry of the critcal values whose values
+	are their probability.  It takes the turns you wish to compute for, an empty dictionarry
+	memo for memorization and the health of the defender which would be the node 
+	for which you specifically wish to compute probability for.
 
 
-Change #
+
+Change # 4:
+ 
+	#Q! put that stuff you changed here!!!!!! and delete the rest of this change
 
 	This change to the internal code is so that we can acomodate our new class "TeleportUnit".  We made the change because we decided that instead of causeing an
 	enemy to blow up, teleporter units would use "Negative-Space-Implosion" to smite their enemies.  This mod allows the afffected functions to check class type and changes the die effect and sound accordingly based on the unit type.

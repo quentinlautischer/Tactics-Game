@@ -8,35 +8,40 @@ def nodal_prob(base_attack,crit_prob,turns,memo,health):
 	for which you specifically wish to compute probability for
 	"""
 
-	turns_left = turns - 1
+	turns_left = turns - 1 #If 0 we dont want to call recursivley again
 
-	print("Turns left:")
-	print(turns_left)
-	#nodal_prob = 0 #<-- THIS IS THE ISSUE THIS VARIABLE HAS THE SAME NAME AS THE FUNCTION
-	nodally_probular = 0
+	nodally_probular = 0 #Set the base probability for this node to be 0
 
-	print("health_left:")
-	for crit in crit_prob:
-		total_d = crit + base_attack
-		health_left = health - total_d
-		print(health_left)
+	for crit in crit_prob: #Look through the critical probabilitiess
+		total_damage = crit + base_attack
+		health_left = health - total_damage
 		if (base_attack,turns,health) not in memo:
+			"""
+			This if statement is to make sure we didnt already memmoize the 
+			probability for this specific instance
+			"""
 			
-			if total_d == 0:
+			if total_damage == 0: #Did we do no damage? Then with that crit there is 0 prob
 				nodally_probular += 0
-			elif health_left <= 0:
+			elif health_left <= 0: #Did we kill him? probility is one times the prob of this crit
 				nodally_probular += 1*crit_prob[crit]
-			elif turns_left > 0:
+			elif turns_left > 0: #call recursion if we want to look any turns deeper
 				
 				nodally_probular += nodal_prob(base_attack,crit_prob,turns_left,memo,health_left) * crit_prob[crit]
 		else:
-			nodally_probular += memo[(base_attack,turns,health)]
+			nodally_probular += memo[(base_attack,turns,health)] #We had it memoized already
 
-	memo[(base_attack,turns,health)] = nodally_probular
-	if nodally_probular > 1: nodally_probular = 1
+	memo[(base_attack,turns,health)] = nodally_probular #memoize the result
+	if nodally_probular > 1: nodally_probular = 1 #If prob is bigger than one, we still killed it
 	return nodally_probular
 
 def destroy_prob(attacker, defender, current_tile, turns):
+	"""
+	destroy_prob returns the an array of len(turns + 1).  Each k in the array is the 
+	probability of destroying the defender in k turns taking into account defenses, tile 
+	defense bonus, attack power and critical attack probabilities
+	"""
+
 
 	base_attack = attacker.get_damage(defender,current_tile)
 	hp = defender.health
@@ -45,7 +50,6 @@ def destroy_prob(attacker, defender, current_tile, turns):
 	memo = {}
 
 	for i in range(turns+1):
-		#memo = {}
 
 		prob_i = nodal_prob(base_attack,crit_prob,i,memo,hp)
 		prob.append(prob_i)

@@ -57,4 +57,19 @@ class Water_warper(TeleportUnit):
 
 		return True
 
+
+	def can_hit(self, target_unit):
+		"""
+		Determines whether a unit can hit another unit.
+        
+		Overrides because tanks can't hit planes.
+		"""
+		# If it's an air unit return false
+		if not isinstance(target_unit, unit.water_unit.WaterUnit):
+			return False
+	        
+		# Not an air unit, return true
+		return True
+
+
 unit.unit_types["Water-Warper"] = Water_warper

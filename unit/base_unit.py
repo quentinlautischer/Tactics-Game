@@ -291,7 +291,7 @@ class BaseUnit(Sprite):
         self._angle = angle
         self._update_image()
         
-    def hurt(self, damage, attacker):
+    def hurt(self, damage):
         """
         Causes damage to the unit, and destroys it when it's out of health.
         """

@@ -21,6 +21,7 @@ class TeleportUnit(BaseUnit):
         #set unit specific things.
         self.type = "Teleport Unit"
         self.hit_sound = "Wormhole"
+        self.move_sound = "Wormhole"
         self.hit_effect = effects.Wormhole
         self.kill_effect = effects.Wormhole
         self.move_animation = effects.Wormhole

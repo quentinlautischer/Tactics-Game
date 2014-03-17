@@ -504,7 +504,7 @@ class GUI(LayeredUpdates):
         damage = max(damage, 0)
 
         # Deal damage
-        atk_unit.hurt(damage, self.sel_unit)
+        atk_unit.hurt(damage)
         
         # Do the attack effect.
         if self.sel_unit.hit_effect:

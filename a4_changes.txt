@@ -2,8 +2,8 @@ Change to internal functionality:
 
 Change # 1:
 
-	This change was a implimentation of our custome class.  Our new class is a
-	"TeleportUnit".  It has the ability to move far in one move.  Aka it can move into a thing ring of a high radious aroundit. This class also does not drive around like other classes, it teleports around so we took out the movement animation and added a teleport animation.
+	This change was a implimentation of our custom class.  Our new class is a
+	"TeleportUnit".  It has the ability to move far in one move.  Aka it can move into a thing ring of a high radious aroundit. This class also does not drive around like other classes, it teleports around so we modified the update method in such a way that the movement animation was changed to a teleport animation.
 
 Change # 2:
 
@@ -26,36 +26,28 @@ Change # 3:
 
 
 Change # 4:
- 
-	#Q! put that stuff you changed here!!!!!! and delete the rest of this change
 
 	This change to the internal code is so that we can acomodate our new class "TeleportUnit".  We made the change because we decided that instead of causeing an
 	enemy to blow up, teleporter units would use "Negative-Space-Implosion" to smite their enemies.  This mod allows the afffected functions to check class type and changes the die effect and sound accordingly based on the unit type.
 
+	documents edited: base_unit.py
+
+		We added the attribute "kill_effect" to the base_unit. Normally the units would call a death_effect when killed, but we wanted to modify this so that when our teleport unit kills another unit it causes a blackhole effect. It should still be explosion by default. 
 
 	documents edited: GUI.py
 
-		within the GUI class we modified the method "sel_unit_attack()".  We edited
-		the call to the function "atk_unit.hurt()" to accept a second perameter
-		"self.sel_unit" (ie: the attacking unit object)
+		We simply replace .die_effect with .kill_effect
 
-	documents edited: base_unit.py
+		if not atk_unit.active:
+            # Add its death effect
+            if self.sel_unit.die_effect:
+                self._effects.add(self.sel_unit.die_effect(
+                    self.map.screen_coords(pos)))
 
-		within the class "BaseUnit" we modified the method "hurt()" to accept a second
-		parameter "attacker" (ie: the attacking unit object)
+        if not atk_unit.active:
+            # Add its death effect
+            if self.sel_unit.kill_effect:
+                self._effects.add(self.sel_unit.kill_effect(
+                    self.map.screen_coords(pos)))
 
-		Here is what we changed that method to:
-
-
-			def hurt(self, damage, attacker):
-		        """
-		        Causes damage to the unit, and destroys it when it's out of health.
-		        """
-		        self.health -= damage
-		        
-		        if attacker.type == "Warper":
-		            self.die_effect = effects.Wormhole
-		            self.die_sound = "Wormhole"
-		        else: 
-		            self.die_effect = effects.Explosion
-		            self.die_sound = "Explosion"
+	

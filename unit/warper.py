@@ -5,20 +5,21 @@ import pygame
 
 class Warper(TeleportUnit):
     """
-    Highly advanced soldier with the ability to teleport
-    Carries a spear that destroys anything it touches.
+    The Nova Vangard special attack force unit this is soley one man.  But one man is 
+    all you need when you have TELEPORTAION MOTHER FUNNER!  Boasting a Tesla class 
+    7.8 Mega Warp-Unit teleportation module he can be in and out before anyone is the wiser.
+    I know what your thinking, 7.8 Mega Warp-Units? You dont need nearly that many to simply
+    teleport the average man, and you would be correct! The extra 7.7 Mega Warp-Units is so
+    he can WARP HIS ENEMIES TO OBLIVION!  Thats right, fitted with the Negative-Space-Implosion
+    module expasion simply close a wormhole on anyone you wish to smite, be smited or have smoten!
     
     Armour: Low
     Speed: High
     Range: Low
     Damage: VERY HIGH
+    Cool?: Yes
    
     
-    Other notes:
-    - In order to maintain its high speed, the fighter has fairly low fuel.
-      Make well-planned strafing runs and be sure you can get back to a carrier
-      in time!
-    - When firing at another air unit, this unit does extra damage.
     """
     sprite = pygame.image.load("assets/novavangard.png")
     
@@ -35,7 +36,7 @@ class Warper(TeleportUnit):
         self.speed = 10
         self.max_atk_range = 1
         self.damage = 50
-        self.defense = 3
+        self.defense = 0
         self.bonus_damage = 2
         self.min_move_distance = 8
 

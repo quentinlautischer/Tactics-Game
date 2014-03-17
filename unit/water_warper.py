@@ -8,14 +8,12 @@ class Water_warper(TeleportUnit):
 	"""
 	Akimbo to the warper unit, the Nova class water warper "Angler" is
 	an advanced underwater submarine with the ability to immediately destroy
-	adjacent targets using Negative-Space-Implosion.  It also features a 
-	ranged plasma cannon that can attack a riadius of land.
+	adjacent targets using Negative-Space-Implosion.  Have fun ;)
 
 	Armour: Low
 	Speed: High
-	Range: Moderate-Low
-	Damage: Moderate-Very High
-	Special: Cannon blasts affect four adjacent sqaures to target
+	Range: Low
+	Damage: Very High
 	Overall Bad Arseness: Top Score
 
 	"""
@@ -36,7 +34,7 @@ class Water_warper(TeleportUnit):
 		self.max_atk_range = 1
 
 		self.damage = 50
-		self.defense = 8
+		self.defense = 3
 		self.bonus_damage = 2
 		self.min_move_distance = 13
 
